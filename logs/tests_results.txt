@@ -1,5 +1,5 @@
 test_closest (__main__.TestExercice) ... FAIL
-test_coordinates (__main__.TestExercice) ... FAIL
+test_coordinates (__main__.TestExercice) ... ok
 test_linear_values (__main__.TestExercice) ... ERROR
 
 ======================================================================
@@ -22,26 +22,7 @@ Traceback (most recent call last):
     self.assertEqual(
 AssertionError: 0 != 3 : Erreur dans le remplacement de caractère
 
-======================================================================
-FAIL: test_coordinates (__main__.TestExercice)
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "test_exercice.py", line 29, in test_coordinates
-    np.testing.assert_array_equal(
-  File "/home/runner/.local/lib/python3.8/site-packages/numpy/testing/_private/utils.py", line 934, in assert_array_equal
-    assert_array_compare(operator.__eq__, x, y, err_msg=err_msg,
-  File "/home/runner/.local/lib/python3.8/site-packages/numpy/testing/_private/utils.py", line 763, in assert_array_compare
-    raise AssertionError(msg)
-AssertionError: 
-Arrays are not equal
-Mauvaise réponse
-(shapes (0,), (3, 2) mismatch)
- x: array([], dtype=float64)
- y: array([[ 0.      ,  0.      ],
-       [14.142136,  0.785398],
-       [ 2.236068, -0.463648]])
+Ran 3 tests in 0.016s
 
-----------------------------------------------------------------------
-Ran 3 tests in 0.009s
-
-FAILED (failures=2, errors=1)
+FAILED (failures=1, errors=1)
