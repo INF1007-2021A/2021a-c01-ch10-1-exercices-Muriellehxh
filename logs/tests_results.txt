@@ -23,6 +23,6 @@ Traceback (most recent call last):
 AssertionError: 10 != 3 : Erreur dans le remplacement de caractère
 
 ----------------------------------------------------------------------
-Ran 3 tests in 0.030s
+Ran 3 tests in 0.093s
 
 FAILED (failures=1, errors=1)
