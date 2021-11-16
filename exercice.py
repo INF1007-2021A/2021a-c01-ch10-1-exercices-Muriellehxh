@@ -5,6 +5,7 @@
 # TODO: Importez vos modules ici
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 
 
 # TODO: Définissez vos fonctions ici (il en manque quelques unes)
@@ -30,6 +31,17 @@ def find_closest_index(values: np.ndarray, number: float) -> int:
     return values[index]
 
 
+def graphique(formule, x_values):
+
+    x = np.array(x_values)
+    y = eval(formule)
+    plt.plot(x, y)
+    plt.show()
+
+
+def def_formule(x):
+    return (x**2 * math.sin(1/x**2)) + x
+
 # methode montecarlo = cercle de rayon (chiffre a exterieur = exterieur de rayon
 
 if __name__ == '__main__':
@@ -39,3 +51,6 @@ if __name__ == '__main__':
     print(coordinate_conversion(np.array(cart)))
 
     print(find_closest_index(values=np.random.random(10), number=0.5))
+
+    x_values = [-1,1]
+    graphique('(x**2 * math.sin(1/x**2))', )
