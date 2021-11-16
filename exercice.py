@@ -31,15 +31,16 @@ def find_closest_index(values: np.ndarray, number: float) -> int:
     return values[index]
 
 
-def graphique(formule, x_values):
+
+
+def graphique(x_values):
+
 
     x = np.array(x_values)
-    y = formule(x)
+    y = x**2 * math.sin(1/x**2) + x
     plt.plot(x, y)
     plt.show()
 
-def def_formule(x):
-    return (x**2 * math.sin(1/x**2)) + x
 
 # methode montecarlo = cercle de rayon (chiffre a exterieur = exterieur de rayon
 
@@ -52,4 +53,5 @@ if __name__ == '__main__':
     print(find_closest_index(values=np.random.random(10), number=0.5))
 
 
-    graphique(lambda x: (x ** 2 * math.sin(1 / x ** 2)) + x, np.arange(-1, 1))
+    x_values = range(-1, 1)
+    graphique(x_values)
