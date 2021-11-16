@@ -34,10 +34,9 @@ def find_closest_index(values: np.ndarray, number: float) -> int:
 def graphique(formule, x_values):
 
     x = np.array(x_values)
-    y = eval(formule)
+    y = formule(x)
     plt.plot(x, y)
     plt.show()
-
 
 def def_formule(x):
     return (x**2 * math.sin(1/x**2)) + x
@@ -52,5 +51,5 @@ if __name__ == '__main__':
 
     print(find_closest_index(values=np.random.random(10), number=0.5))
 
-    x_values = [-1,1]
-    graphique('(x**2 * math.sin(1/x**2))', )
+
+    graphique(lambda x: (x ** 2 * math.sin(1 / x ** 2)) + x, np.arange(-1, 1))
