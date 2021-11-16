@@ -20,9 +20,9 @@ FAIL: test_closest (__main__.TestExercice)
 Traceback (most recent call last):
   File "test_exercice.py", line 42, in test_closest
     self.assertEqual(
-AssertionError: 0 != 3 : Erreur dans le remplacement de caractère
+AssertionError: 10 != 3 : Erreur dans le remplacement de caractère
 
 ----------------------------------------------------------------------
-Ran 3 tests in 0.016s
+Ran 3 tests in 0.007s
 
 FAILED (failures=1, errors=1)
