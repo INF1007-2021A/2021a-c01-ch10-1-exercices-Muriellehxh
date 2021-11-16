@@ -24,7 +24,10 @@ def coordinate_conversion(cartesian_coordinates: np.ndarray) -> np.ndarray:
 
 
 def find_closest_index(values: np.ndarray, number: float) -> int:
-    return 0
+    print(values)
+    index = np.abs(values-number).argmin()
+
+    return values[index]
 
 
 # methode montecarlo = cercle de rayon (chiffre a exterieur = exterieur de rayon
@@ -34,3 +37,5 @@ if __name__ == '__main__':
     lin = (linear_values())
     cart = [[1,2], [2,5]]
     print(coordinate_conversion(np.array(cart)))
+
+    print(find_closest_index(values=np.random.random(10), number=0.5))
