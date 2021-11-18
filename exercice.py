@@ -11,8 +11,7 @@ import matplotlib.pyplot as plt
 # TODO: Définissez vos fonctions ici (il en manque quelques unes)
 def linear_values() -> np.ndarray:
     m = int(64)
-    return np.linspace(-1.4, 2.5, 64) #UNIFORM ARRANGEMENT, dont use random.uniform
-
+    return np.linspace(-1.4, 2.5, 64)  # UNIFORM ARRANGEMENT, dont use random.uniform
 
 
 def coordinate_conversion(cartesian_coordinates: np.ndarray) -> np.ndarray:
@@ -26,65 +25,71 @@ def coordinate_conversion(cartesian_coordinates: np.ndarray) -> np.ndarray:
 
 
 def find_closest_index(values: np.ndarray, number: float) -> int:
-
     print(values)
-    index = np.abs(values-number).argmin() # on va a travers array de valeurs pour trouver difference la plus petite
+    index = np.abs(values - number).argmin()  # on va a travers array de valeurs pour trouver difference la plus petite
 
     return values[index]
 
 
-
-
 def graphique(x_values):
+    # correction
 
-
-# correction
-
-    x = np.linspace(-1,1, num=250)
+    x = np.linspace(-1, 1, num=250)
     #  y = x**2 * math.sin(1/x**2) + x  ==> NO!!!
 
-    y = x**2 * np.sin(1/x**2) + x
+    y = x ** 2 * np.sin(1 / x ** 2) + x
 
     plt.plot(x, y)
     plt.show()
 
 
-
 def pi():
-# methode montecarlo = cercle de rayon (chiffre a exterieur = exterieur de rayon
-   N = 10000
+    # methode montecarlo = cercle de rayon (chiffre a exterieur = exterieur de rayon
+    # YOU CANT CREATE EMPTY NP.ARRAY !! INSTEAD CREATE LIST, THEN UPDATE, THEN TURN INTO ARRAY AT END
 
-   x = np.random.random(size = N)
-   y = np.random.random(size = N)
+    N = 10000
 
-   z = (x ** 2 + y ** 2)
-   while 1 > z >= 0:
+    x = np.random.uniform(low=-1, high=1, size=N)
+    y = np.random.uniform(low=-1, high=1, size=N)
 
-       z_dans_cercle = z
+    z = (x ** 2 + y ** 2)
 
-   while 1 <= z <= 2:
-       z_hors_cercle = z
+    list_int_x = []
+    list_int_y = []
+    list_ext_x = []
+    list_ext_y = []
 
+    for p_cercle in z:
+        ind = np.where(z == p_cercle)
+        if math.sqrt(p_cercle) < 1:
+            list_int_x.append(x[ind])
+            list_int_y.append(y[ind])
+        else:
+            list_ext_x.append(x[ind])
+            list_ext_y.append(y[ind])
 
-   pi = 4*z.sum()/N
+    np_int_x = np.array(list_int_x)
+    np_int_y = np.array(list_int_y)
+    np_ext_x = np.array(list_ext_x)
+    np_ext_y = np.array(list_ext_y)
 
+    plt.scatter(np_int_x, np_int_y)
+    plt.scatter(np_ext_x, np_ext_y)
 
-
-   return pi
+    plt.show()
 
 
 if __name__ == '__main__':
     # TODO: Appelez vos fonctions ici
     print(linear_values())
 
-    cart = [[1,2], [2,5]]
+    cart = [[1, 2], [2, 5]]
 
     print(coordinate_conversion(np.array(cart)))
 
     print(find_closest_index(values=np.random.random(10), number=0.5))
 
-
     x_values = range(-1, 1)
-    #graphique(x_values)
+    # graphique(x_values)
 
     print(pi())
