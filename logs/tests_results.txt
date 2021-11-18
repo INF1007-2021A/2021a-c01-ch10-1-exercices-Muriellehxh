@@ -25,6 +25,6 @@ First differing element 0:
 Diff is 3447 characters long. Set self.maxDiff to None to see it. : Mauvaise identification de la parité de la longueur de la chaine
 
 ----------------------------------------------------------------------
-Ran 3 tests in 0.042s
+Ran 3 tests in 0.049s
 
 FAILED (failures=2)
