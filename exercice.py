@@ -36,13 +36,25 @@ def find_closest_index(values: np.ndarray, number: float) -> int:
 def graphique(x_values):
 
 
-    x = np.array(x_values)
-    y = x**2 * math.sin(1/x**2) + x
+# correction
+
+    x = np.linspace(-1,1, num=250)
+    # NO! y = x**2 * math.sin(1/x**2) + x
+
+    y = x**2 * np.sin(1/x**2) + x
+
     plt.plot(x, y)
     plt.show()
 
 
+
+def pi():
+
+
 # methode montecarlo = cercle de rayon (chiffre a exterieur = exterieur de rayon
+
+
+
 
 if __name__ == '__main__':
     # TODO: Appelez vos fonctions ici
