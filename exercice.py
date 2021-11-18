@@ -54,9 +54,18 @@ def pi():
 # methode montecarlo = cercle de rayon (chiffre a exterieur = exterieur de rayon
    N = 10000
 
-   a = np.random.random(size = N)
-   b = np.random.random(size = N)
-   z = (a ** 2 + b ** 2) < 1
+   x = np.random.random(size = N)
+   y = np.random.random(size = N)
+
+   z = (x ** 2 + y ** 2)
+   while 1 > z >= 0:
+
+       z_dans_cercle = z
+
+   while 1 <= z <= 2:
+       z_hors_cercle = z
+
+
    pi = 4*z.sum()/N
 
 
