@@ -6,6 +6,7 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+import sympy as sy
 
 
 # TODO: Définissez vos fonctions ici (il en manque quelques unes)
@@ -76,7 +77,20 @@ def pi():
     plt.scatter(np_int_x, np_int_y)
     plt.scatter(np_ext_x, np_ext_y)
 
-    plt.show()
+    # plt.show()
+
+
+x= sy.Symbol('x')
+
+y = np.exp(-x ** 2)
+
+print(sy.integrate(y, (x)))
+
+x = np.linspace(-4, 4, 1000)
+plt.plot(x, f(x))
+plt.axhline(color='red')
+plt.fill_between(x, f(x), where=[(x>=-4) and (x<=4) for x in x])
+plt.show()
 
 
 if __name__ == '__main__':
