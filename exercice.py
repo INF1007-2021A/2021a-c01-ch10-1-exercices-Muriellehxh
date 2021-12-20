@@ -11,86 +11,63 @@ import sympy as sy
 
 # TODO: Définissez vos fonctions ici (il en manque quelques unes)
 def linear_values() -> np.ndarray:
-    m = int(64)
-    return np.linspace(-1.4, 2.5, 64)  # UNIFORM ARRANGEMENT, dont use random.uniform
+    return np.linspace(-1.3, 2.5, 64)
 
 
 def coordinate_conversion(cartesian_coordinates: np.ndarray) -> np.ndarray:
-    list_pol = []
+
+    list_np = []
     for coord in cartesian_coordinates:
-        r = np.sqrt(coord[0] ** 2 + coord[1] ** 2)
+        r = np.sqrt(coord[0]**2 + coord[1]**2)
         phi = np.arctan2(coord[1], coord[0])
-        list_pol.append([r, phi])
-
-    return np.array(list_pol)
-
-
-def find_closest_index(values: np.ndarray, number: float) -> int:
-    print(values)
-    index = np.abs(values - number).argmin()  # on va a travers array de valeurs pour trouver difference la plus petite
-
-    return values[index]
+        list_np.append([r, phi])
+    return np.array(list_np)
 
 
-def graphique(x_values):
-    # correction
+def find_closest_index(values: np.ndarray, number: float) -> int:   # not right but its fine
 
+    list_diff = []
+    for n in values:
+        list_diff.append(abs(n-number))
+
+    return values[list_diff.index(min(list_diff))]
+
+
+
+def graphique(): # revoir !! ( tu peux utiliser l'equation direct, lamda marche pas avec )
     x = np.linspace(-1, 1, num=250)
-    #  y = x**2 * math.sin(1/x**2) + x  ==> NO!!!
-
     y = x ** 2 * np.sin(1 / x ** 2) + x
 
-    plt.plot(x, y)
+    plt.scatter(x,y)
     plt.show()
 
 
 def pi():
-    # methode montecarlo = cercle de rayon (chiffre a exterieur = exterieur de rayon
-    # YOU CANT CREATE EMPTY NP.ARRAY !! INSTEAD CREATE LIST, THEN UPDATE, THEN TURN INTO ARRAY AT END
 
-    N = 10000
+    n = 10000
+    x = np.random.rand(n)
+    y = np.random.rand(n)
 
-    x = np.random.uniform(low=-1, high=1, size=N)
-    y = np.random.uniform(low=-1, high=1, size=N)
+    y_inside = []
+    x_inside = []
+    y_outside = []
+    x_outside = []
 
-    z = (x ** 2 + y ** 2)
-
-    list_int_x = []
-    list_int_y = []
-    list_ext_x = []
-    list_ext_y = []
-
-    for p_cercle in z:
-        ind = np.where(z == p_cercle)
-        if math.sqrt(p_cercle) < 1:
-            list_int_x.append(x[ind])
-            list_int_y.append(y[ind])
+    for numb in range(0,n):
+        if math.sqrt(x[numb]**2 + y[numb]**2) < 1 :
+            y_inside.append(y[numb])
+            x_inside.append(x[numb])
         else:
-            list_ext_x.append(x[ind])
-            list_ext_y.append(y[ind])
-
-    np_int_x = np.array(list_int_x)
-    np_int_y = np.array(list_int_y)
-    np_ext_x = np.array(list_ext_x)
-    np_ext_y = np.array(list_ext_y)
-
-    plt.scatter(np_int_x, np_int_y)
-    plt.scatter(np_ext_x, np_ext_y)
-
-    # plt.show()
+            y_outside.append(y[numb])
+            x_outside.append(x[numb])
 
 
-x= sy.Symbol('x')
+    plt.scatter(np.array(x_inside), np.array(y_inside))
+    plt.scatter(np.array(x_outside), np.array(y_outside))
 
-y = np.exp(-x ** 2)
+    plt.show()
 
-print(sy.integrate(y, (x)))
 
-x = np.linspace(-4, 4, 1000)
-plt.plot(x, f(x))
-plt.axhline(color='red')
-plt.fill_between(x, f(x), where=[(x>=-4) and (x<=4) for x in x])
-plt.show()
 
 
 if __name__ == '__main__':
@@ -103,7 +80,7 @@ if __name__ == '__main__':
 
     print(find_closest_index(values=np.random.random(10), number=0.5))
 
-    x_values = range(-1, 1)
-    # graphique(x_values)
+
+    # graphique()
 
     print(pi())
